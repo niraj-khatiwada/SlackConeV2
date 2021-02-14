@@ -1,3 +1,6 @@
+// const { Sequelize } = require('sequelize')
+
+// const sequelize = new Sequelize()
 module.exports = (sequelize, DataTypes) => {
   const Team = sequelize.define('team', {
     id: {
@@ -15,7 +18,12 @@ module.exports = (sequelize, DataTypes) => {
   Team.associate = (models) => {
     Team.belongsToMany(models.User, {
       through: 'member',
-      foreignKey: { name: 'team_id', field: 'teamId' },
+      foreignKey: { name: 'teamId', field: 'teamId' },
+      constraints: false,
+    })
+
+    Team.belongsTo(models.User, {
+      foreignKey: { allowNull: false, name: 'owner' },
       constraints: false,
     })
   }

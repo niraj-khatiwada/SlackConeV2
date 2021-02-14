@@ -44,13 +44,13 @@ module.exports = (sequelize, DataTypes) => {
   User.associate = (models) => {
     User.belongsToMany(models.Team, {
       through: 'member',
-      foreignKey: { name: 'user_id', field: 'userId' },
+      foreignKey: { name: 'userId', field: 'userId' },
       constraints: false,
     })
     User.belongsToMany(models.Channel, {
       through: 'channel_member',
       foreignKey: {
-        name: 'user_id',
+        name: 'userId',
         field: 'userId',
       },
       constraints: false,

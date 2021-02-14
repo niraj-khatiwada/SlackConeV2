@@ -5,6 +5,10 @@ module.exports = gql`
     messages: [Message]
   }
 
+  extend type Mutation {
+    createMessage(message: String!, channelId: ID!): BasicResponse!
+  }
+
   type Message {
     id: ID!
     text: String!

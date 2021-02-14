@@ -7,6 +7,18 @@ const channel = require('./channel')
 
 const global = gql`
   type Query
+  type Mutation
+
+  type BasicResponse {
+    success: Boolean!
+    message: String
+    errors: [ErrorResponse!]
+    code: String
+  }
+  type ErrorResponse {
+    path: String
+    message: String
+  }
 `
 
 module.exports = [user, message, team, channel, global]

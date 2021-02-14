@@ -5,6 +5,10 @@ module.exports = gql`
     team(id: ID!): Team
   }
 
+  extend type Mutation {
+    createTeam(name: String!): BasicResponse!
+  }
+
   type Team {
     id: ID!
     name: String!

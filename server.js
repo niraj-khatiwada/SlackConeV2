@@ -1,12 +1,7 @@
 const express = require('express')
 const bodyParser = require('body-parser')
-const { ApolloServer } = require('apollo-server-express')
-const { makeExecutableSchema } = require('graphql-tools')
+const { ApolloServer, makeExecutableSchema } = require('apollo-server-express')
 const dotenv = require('dotenv')
-const {
-  constraintDirective,
-  constraintDirectiveTypeDefs,
-} = require('graphql-constraint-directive')
 
 const db = require('./src/models/index')
 const { formatError } = require('./src/tools/error')
@@ -20,9 +15,8 @@ const app = express()
 const typeDefs = require('./src/schema/index')
 const resolvers = require('./src/resolvers/index')
 const schema = makeExecutableSchema({
-  typeDefs: [...typeDefs, constraintDirectiveTypeDefs],
+  typeDefs: [...typeDefs],
   resolvers,
-  schemaTransforms: [constraintDirective()],
 })
 
 const apolloServer = new ApolloServer({

@@ -11,8 +11,8 @@ const sequelize = new Sequelize(
   process.env.DATABASE_PASSWORD,
   {
     port: process.env.DATABASE_PORT,
-    dialect: 'mysql',
-    logging: console.log,
+    dialect: 'postgres',
+    logging: false,
     define: {
       underscored: false,
       timestamps: true,

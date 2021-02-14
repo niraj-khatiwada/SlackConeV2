@@ -22,7 +22,7 @@ module.exports = (sequelize, DataTypes) => {
 
   Channel.associate = (models) => {
     Channel.belongsTo(models.Team, {
-      foreignKey: { name: 'team_id', field: 'teamId' },
+      foreignKey: { field: 'teamId', allowNull: false },
       constraints: false,
     })
     Channel.belongsToMany(models.User, {

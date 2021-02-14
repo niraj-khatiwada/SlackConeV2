@@ -10,10 +10,23 @@ class UserViewModel {
     return this.db.findByPk(id)
   }
 
+  findByEmail(email) {
+    return this.db.findOne({ where: { email } })
+  }
+
+  findByUsername(username) {
+    return this.db.findOne({ where: { username } })
+  }
+
   create(data) {
     return this.db.create(data)
   }
 
+  hashPassword(password) {
+    return bcrypt.hash(password, 12)
+  }
+
+  //For seeders
   async bulkCreate(data = []) {
     if (!Array.isArray(data)) {
       throw new Error('Must supply array of values')

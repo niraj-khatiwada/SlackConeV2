@@ -5,10 +5,18 @@ module.exports = gql`
     channel(id: ID!): Channel
   }
 
+  extend type Mutation {
+    createChannel(
+      name: String!
+      public: Boolean = true
+      teamId: ID!
+    ): BasicResponse!
+  }
+
   type Channel {
     id: ID!
     name: String!
-    user: User!
+    users: [User]
     team: Team!
   }
 `
